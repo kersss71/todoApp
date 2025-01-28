@@ -4,7 +4,6 @@ import { store } from './store';
 describe('Redux Store', () => {
   it('should add a todo', () => {
     store.dispatch(addTodo('Test Task'));
-
     const state = store.getState().todos;
     expect(state.todos).toHaveLength(1);
     expect(state.todos[0].text).toBe('Test Task');

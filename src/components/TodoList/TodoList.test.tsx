@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { store } from "../../store/store";
 import TodoList from "./TodoList";
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
 
 jest.mock("lucide-react", () => ({
   Trash2: "mock",
@@ -39,6 +39,14 @@ describe("TodoList", () => {
     );
 
     const checkbox = screen.getByLabelText("Test Todo 1");
+    expect(store.getState().todos.todos[0].completed).toBe(false);
+
     fireEvent.click(checkbox);
+
+    expect(store.getState().todos.todos[0].completed).toBe(true);
+
+    fireEvent.click(checkbox);
+
+    expect(store.getState().todos.todos[0].completed).toBe(false);
   });
 });

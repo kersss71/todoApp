@@ -16,6 +16,7 @@ function App() {
       dispatch(addTodo(newTodo));
       setNewTodo("");
     }
+
   };
 
   return (
